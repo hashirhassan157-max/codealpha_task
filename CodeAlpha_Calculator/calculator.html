@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Calculator</title>
+    <style>
+        body{
+            /* background-image: url("D:\\Background-image\\background image.jpg"); */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-repeat: no-repeat;
+            background-size: cover;
+            backdrop-filter: blur(18px);
+        }
+        .container{
+            width: 260px;
+            border-radius: 10px;
+            background-color: #2b2b2b;
+            margin: 110px auto;
+        }
+        .screen input{
+            width: 230px;
+            height: 90px; 
+            font-size: 38px; 
+            padding: 0px 15px;
+            margin-bottom: 10px;
+            text-align: right;
+            background-color: #2b2b2b;  
+            color: #00ff6a; 
+            border: none;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.8),
+                0px 3px 5px rgba(0, 0, 0, 0.5); 
+            font-family: 'Courier New', monospace; 
+            outline: none; 
+        }
+        .buttons{
+            display: flex;
+            padding: 10px 10px;
+            gap: 5px;
+        }
+        .buttons input{
+            height: 50px;
+            width: 55px;
+            font-size: 20px;
+            border-width: 0px;
+            border-radius: 50%;
+            color: white;
+            background-color: #6f6f6f;
+            cursor: pointer;
+        }
+        .operator input {
+            background-color: #ff9f43; 
+            color: white;
+            font-weight: bold;
+        }
+        .operator input:hover {
+            background-color: #ff7f0e; 
+        }
+        .btn-clr input{
+            background-color: #e74c3c; 
+            color: white;
+            font-weight: bold;
+        }
+        .btn-clr input:hover{
+            background-color: #c0392b;
+        }
+        .btn-equal input{
+            background-color: #2ecc71;
+            color: white;
+            font-weight: bold;
+        }
+        .btn-equal input:hover{
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="screen">
+            <input type="text" name="screen" id="screen" placeholder="0" autocomplete="off">
+        </div>
+        <div id="errorBox"></div>
+        
+        <div class="buttons">
+            <div class="btn1"><input type="button" value="1" onclick="appendValue('1')"></div>
+            <div class="btn2"><input type="button" value="2" onclick="appendValue('2')"></div>
+            <div class="btn3"><input type="button" value="3" onclick="appendValue('3')"></div>
+            <div class="operator"><input type="button" value="+" onclick="add()"></div>
+        </div>
+
+        <div class="buttons">
+            <div class="btn4"><input type="button" value="4" onclick="appendValue('4')"></div>
+            <div class="btn5"><input type="button" value="5" onclick="appendValue('5')"></div>
+            <div class="btn6"><input type="button" value="6" onclick="appendValue('6')"></div>
+            <div class="operator"><input type="button" value="-" onclick="sub()"></div>
+        </div>
+
+        <div class="buttons">
+            <div class="btn7"><input type="button" value="7" onclick="appendValue('7')"></div>
+            <div class="btn8"><input type="button" value="8" onclick="appendValue('8')"></div>
+            <div class="btn9"><input type="button" value="9" onclick="appendValue('9')"></div>
+            <div class="operator"><input type="button" value="x" onclick="mul()"></div>
+        </div>
+
+        <div class="buttons">
+            <div class="btn-clr"><input type="button" value="CLR" onclick="clr()"></div>
+            <div class="btn10"><input type="button" value="0" onclick="appendValue('0')"></div>
+            <div class="btn-equal"><input type="button" value="=" onclick="equal()"></div>
+            <div class="operator"><input type="button" value="%" onclick="divi()"></div>
+        </div>
+
+    </div>
+
+    <script>
+        let screen = document.getElementById("screen");
+
+        window.onload = function() {
+            screen.focus();
+        };
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                equal();
+            }
+            else if (event.key === "Escape") {
+                clr();
+            }
+            else {
+                screen.focus();
+            }
+        });
+
+        function appendValue(value) {
+            if (screen.value === "0") {
+                screen.value = value;
+            } else {
+                screen.value += value;
+            }
+        }
+
+        function clr() {
+             screen.value="";
+        }
+
+        function add() {
+            screen.value += "+";
+        }
+
+        function sub() {
+            screen.value += "-";
+        }
+
+        function mul() {
+            screen.value += "*";
+        }
+
+        function divi() {
+            screen.value += "/";
+        }
+
+        function equal() {
+            try {
+                let expression = screen.value.replace(/x/g,'*').replace(/X/g, '*');
+                
+                if(expression === "") return; 
+
+                screen.value = eval(expression); 
+            } catch {
+                screen.value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
