@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+    <div class="header-top">
+        <h1>Simple Gallery</h1>
+        <button id="theme-toggle" class="theme-btn" title="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <p>Showcasing our best work</p>
+    
+    <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search for 'Animals', 'Nature', 'Tech'...">
+    </div>
+
+    <div class="filter-buttons">
+        <button class="btn active" data-filter="all">All</button>
+        <button class="btn" data-filter="nature">Nature</button>
+        <button class="btn" data-filter="tech">Tech</button>
+        <button class="btn" data-filter="animal">Animals</button>
+        <button class="btn" data-filter="architecture">Architecture</button>
+    </div>
+</header>
+
+        <div class="gallery-grid" id="gallery-grid">
+            </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+    
+    <div class="lightbox-toolbar">
+        <span class="counter" id="image-counter">1 / 8</span>
+        <div class="tools">
+            <button class="tool-btn" id="btn-download" title="Download"><i class="fas fa-download"></i></button>
+            <button class="tool-btn" id="btn-fullscreen" title="Fullscreen"><i class="fas fa-expand"></i></button>
+            <button class="tool-btn" id="close-lightbox"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <div class="lightbox-content">
+        <button class="nav-btn prev-btn" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+        
+        <div class="image-wrapper">
+            <img src="" alt="Lightbox Image" class="lightbox-img" id="lightbox-img">
+            <div class="caption-overlay">
+                <h3 id="lightbox-category">Category</h3>
+                <p id="lightbox-caption">Image description</p>
+            </div>
+        </div>
+
+        <button class="nav-btn next-btn" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="thumbnail-container">
+        <div class="thumbnail-strip" id="thumbnail-strip">
+            </div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
