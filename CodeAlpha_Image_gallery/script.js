@@ -1,4 +1,4 @@
-// 1. Image Data Array
+// Image Data Array
 const images = [
     { id: 1, src: 'https://picsum.photos/id/1015/600/600', category: 'nature', text: 'River Valley' },
     { id: 2, src: 'https://picsum.photos/id/1019/600/600', category: 'nature', text: 'Mountain View' },
@@ -205,5 +205,6 @@ fullscreenBtn.addEventListener('click', () => {
         document.exitFullscreen();
     }
 });
+
 
 renderGallery(images);
