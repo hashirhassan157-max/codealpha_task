@@ -1,14 +1,12 @@
-// --- Preloader Logic ---
+// preloader
 const preloader = document.getElementById('preloader');
-
 window.addEventListener('load', () => {
-    
     setTimeout(() => {
         preloader.classList.add('preloader-hidden');
         setTimeout(() => {
             preloader.style.display = 'none';
         }, 500);
-    }, 1500); 
+    }, 1500);
 });
 
 // Scroll Progress Bar 
@@ -19,16 +17,16 @@ window.addEventListener("scroll", () => {
     document.getElementById("progress-bar").style.width = scrolled + "%";
 });
 
-// Custom Cursor Logic
+// custom cursor Logic
 const cursor = document.querySelector(".cursor");
 const cursor2 = document.querySelector(".cursor2");
 
-document.addEventListener("mousemove", function(e) {
+document.addEventListener("mousemove", function (e) {
     cursor2.style.cssText = "left: " + e.clientX + "px; top: " + e.clientY + "px;";
     cursor.style.cssText = "left: " + e.clientX + "px; top: " + e.clientY + "px;";
 });
 
-// 1. Mobile Menu Toggle
+// mobile menu toggle
 const menuBtn = document.querySelector('.menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
@@ -36,9 +34,9 @@ menuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-// 2. Typing Effect for Hero Section
+// typing effect for hero section
 const typeWriterElement = document.querySelector('.typewriter');
-const textArray = ["Full-Stack developer","Web Developer", "BSCS Student", "Coding Enthusiast", "PHP Developer"];
+const textArray = ["Full-Stack developer", "Web Developer", "BSCS Student", "Coding Enthusiast", "PHP Developer"];
 let textIndex = 0;
 let charIndex = 0;
 
@@ -65,7 +63,7 @@ function erase() {
 }
 document.addEventListener("DOMContentLoaded", type);
 
-// 3. Scroll Reveal Animation (Intersection Observer)
+// scroll animation 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -78,7 +76,7 @@ const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 
 
-// 4. AI Assistant Chatbot Logic
+// AI assistant chatbot 
 const chatToggle = document.getElementById('chat-toggle');
 const chatWindow = document.getElementById('chat-window');
 const closeChat = document.getElementById('close-chat');
@@ -86,7 +84,6 @@ const sendBtn = document.getElementById('send-btn');
 const userInput = document.getElementById('user-input');
 const chatBody = document.getElementById('chat-body');
 
-// Toggle Chat Window
 chatToggle.addEventListener('click', () => {
     chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
 });
@@ -95,7 +92,6 @@ closeChat.addEventListener('click', () => {
     chatWindow.style.display = 'none';
 });
 
-// Knowledge Base
 const knowledgeBase = {
     "hello": "Hi there! How can I help you learn more about Hashir?",
     "hi": "Hello! Ask me about Hashir's skills or projects.",
@@ -108,16 +104,13 @@ const knowledgeBase = {
     "experience": "He works as a Frontend Developer at CodeAlpha (Nov 2025 - Present)."
 };
 
-// Send Message Function
 function sendMessage() {
     const text = userInput.value.trim().toLowerCase();
     if (text === "") return;
 
-    // Add User Message
     addMessage(userInput.value, 'user-msg');
     userInput.value = '';
 
-    // Simulate Bot Typing/Thinking
     setTimeout(() => {
         const response = getBotResponse(text);
         addMessage(response, 'bot-msg');
@@ -129,11 +122,10 @@ function addMessage(text, className) {
     msgDiv.classList.add('message', className);
     msgDiv.innerHTML = `<p>${text}</p>`;
     chatBody.appendChild(msgDiv);
-    chatBody.scrollTop = chatBody.scrollHeight; // Auto scroll to bottom
+    chatBody.scrollTop = chatBody.scrollHeight;
 }
 
 function getBotResponse(input) {
-    // Simple keyword matching
     for (let key in knowledgeBase) {
         if (input.includes(key)) {
             return knowledgeBase[key];
@@ -141,46 +133,44 @@ function getBotResponse(input) {
     }
     return "I'm not sure about that, but you can contact Hashir directly via email!";
 }
-
-// Event Listeners for Chat
 sendBtn.addEventListener('click', sendMessage);
 userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') sendMessage();
 });
 
-// 5. 3D Tilt Effect Initialization Animation
+// 3d vanilla tilt effect animation
 VanillaTilt.init(document.querySelectorAll(".service-card, .project-showcase, .about-card, .tech-item, .step-card, .timeline-content "), {
-    max: 15,            // Max tilt rotation (degrees)
-    speed: 400,         // Speed of the tilt
-    glare: true,        // Add a light glare effect
-    "max-glare": 0.5,   // Opacity of the glare
+    max: 15,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.5,
 });
 
-// 9. Theme Switcher
+// for color switcher
 function setTheme(primary, secondary) {
     document.documentElement.style.setProperty('--primary', primary);
     document.documentElement.style.setProperty('--secondary', secondary);
 }
 
-// 6. Particles Background
+// 3D particles background
 particlesJS("particles-js", {
-  "particles": {
-    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-    "color": { "value": "#38bdf8" }, /* Matches your Cyan Primary Color */
-    "shape": { "type": "circle" },
-    "opacity": { "value": 0.5, "random": false },
-    "size": { "value": 3, "random": true },
-    "line_linked": { "enable": true, "distance": 150, "color": "#38bdf8", "opacity": 0.4, "width": 1 },
-    "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } },
-    "modes": { "repulse": { "distance": 100, "duration": 0.4 } }
-  }
+    "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#38bdf8" }, /* Matches your Cyan Primary Color */
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": false },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#38bdf8", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } },
+        "modes": { "repulse": { "distance": 100, "duration": 0.4 } }
+    }
 });
 
-// --- Back to Top Button Logic ---
+// back to top btn 
 const backToTopBtn = document.getElementById("back-to-top");
 
 window.addEventListener("scroll", () => {
